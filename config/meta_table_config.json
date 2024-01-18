@@ -40,6 +40,13 @@
             ],
             "object_type": "individual",
             "header_name": "Condition"
+        },
+        {
+            "field": [
+                "sampling-site"
+            ],
+            "object_type": "sample",
+            "header_name": "Location"
         }
     ]
 }

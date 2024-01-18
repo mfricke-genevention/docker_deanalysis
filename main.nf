@@ -77,5 +77,5 @@ process deanalysis {
 workflow {
   file_join(join_table, metadata, data_config, file_channels, params.count_files)
   metadata_join(metadata2table, metadata, meta_data_config, params.count_files)
-  // deanalysis(deanalysis_script, metadata_join.out, file_join.out)
+  deanalysis(deanalysis_script, metadata_join.out, file_join.out)
 }

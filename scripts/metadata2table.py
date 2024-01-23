@@ -62,11 +62,15 @@ def set_timepoint_index(field, item):
         timepoint_index = None
         if timepoint:
             timepoints = get(item, ["individual", "timepoints"])
-            for i, timepoint_content in enumerate(timepoints):
-                if timepoint_content.get("timepoint") == timepoint:
-                    field[field.index("$TIMEPOINT")] = i
-                    timepoint_index = i
-                    break
+            if timepoints is not None:
+                for i, timepoint_content in enumerate(timepoints):
+                    if timepoint_content.get("timepoint") == timepoint:
+                        field[field.index("$TIMEPOINT")] = i
+                        timepoint_index = i
+                        break
+            else:
+                raise ValueError(
+                    "No timepoints found. Check if the workflow as 'Include Clinical Metadata' enabled.")
 
         if timepoint is None:
             raise ValueError(f"No timepoint specified in metadata")
